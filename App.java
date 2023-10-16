@@ -51,7 +51,7 @@ public class App {
         // }
 
         if (commonArgs.help) {
-            jcmdr.usage();
+            // jcmdr.usage();
             return;
         }
 
