@@ -42,13 +42,13 @@ public class App {
                 .addObject(sampleApplication)
                 .addObject(commonArgs)
                 .build();
-
-        try {
-            jcmdr.parse(args);
-        } catch (ParameterException ex) {
-            System.err.println(ex.getMessage());
-            return;
-        }
+        //Commented
+        // try {
+        //     jcmdr.parse(args);
+        // } catch (ParameterException ex) {
+        //     System.err.println(ex.getMessage());
+        //     return;
+        // }
 
         if (commonArgs.help) {
             jcmdr.usage();
