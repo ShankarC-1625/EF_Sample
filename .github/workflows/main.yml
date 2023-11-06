@@ -87,14 +87,28 @@ jobs:
 
 
       - name: Check if ECR Repository Exists
+        env:
+          REPO_NAME: my-app4
         run: |
-          REPO_NAME="my-app4"  # Set the repository name you want to check/create
           if aws ecr describe-repositories --repository-names "$REPO_NAME" &>/dev/null; then
             echo "ECR repository $REPO_NAME already exists."
           else
-            echo "ECR repository $REPO_NAME does not exist. Creating..."
-            aws ecr create-repository --repository-name "$REPO_NAME"
+            if aws ecr create-repository --repository-name "$REPO_NAME" &>/dev/null; then
+              echo "ECR repository $REPO_NAME created successfully."
+            else
+              echo "Error: Failed to create ECR repository $REPO_NAME."
+            fi
           fi
+
+
+        # run: |
+        #   REPO_NAME="my-app4"  # Set the repository name you want to check/create
+        #   if aws ecr describe-repositories --repository-names "$REPO_NAME" &>/dev/null; then
+        #     echo "ECR repository $REPO_NAME already exists."
+        #   else
+        #     echo "ECR repository $REPO_NAME does not exist. Creating..."
+        #     aws ecr create-repository --repository-name "$REPO_NAME"
+        #   fi
 
   # ecr-push:
   #   runs-on: ubuntu-latest
