@@ -47,9 +47,9 @@ jobs:
     #     docker image build -t gs-maven/nov6:latest .
     #     docker push gs-maven/nov6:latest      
 
-     steps:
+    steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Log in to Docker Hub
       run: echo ${{ secrets.DOCKERPWD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
