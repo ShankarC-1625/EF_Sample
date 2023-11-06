@@ -53,10 +53,8 @@ jobs:
 
     - name: Log in to Docker Hub
       run: echo ${{ secrets.DOCKERPWD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-
+      
     - name: Build and push Docker image
-      run: docker build -t gs-maven/nov6:latest .
-      # Other build and push commands here
-
-    - name: Push to Docker Hub
-      run: docker push gs-maven/nov6:latest
+      run: |
+        docker build -t gs-maven/nov6:latest .
+        docker push gs-maven/nov6:latest
