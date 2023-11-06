@@ -85,12 +85,14 @@ jobs:
       #   run: |
       #     aws ecr create-repository --repository-name my-app
 
+
       - name: Check if ECR Repository Exists
         run: |
-          REPO_NAME="my-app"  # Set the repository name you want to check/create
+          REPO_NAME="my-app1"  # Set the repository name you want to check/create
           if aws ecr describe-repositories --repository-names "$REPO_NAME" &>/dev/null; then
             echo "ECR repository $REPO_NAME already exists."
           else
+            echo "ECR repository $REPO_NAME does not exist. Creating..."
             aws ecr create-repository --repository-name "$REPO_NAME"
           fi
 
