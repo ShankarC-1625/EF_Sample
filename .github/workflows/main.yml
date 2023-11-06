@@ -81,9 +81,18 @@ jobs:
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws configure set default.region us-east-1
 
-      - name: Create ECR Repository
+      # - name: Create ECR Repository
+      #   run: |
+      #     aws ecr create-repository --repository-name my-app
+
+      - name: Check if ECR Repository Exists
         run: |
-          aws ecr create-repository --repository-name my-app
+          REPO_NAME="my-app"
+          if aws ecr describe-repositories --repository-names "$my-app" &>/dev/null; then
+            echo "ECR repository $my-app already exists."
+          else
+            aws ecr create-repository --repository-name "$my-app"
+          fi
 
   ecr-push:
     runs-on: ubuntu-latest
