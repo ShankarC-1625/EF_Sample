@@ -143,13 +143,13 @@ jobs:
         run: |
           docker tag shankarc1625/gs-maven-nov6:latest 476185633844.dkr.ecr.us-east-1.amazonaws.com/my-app4:latest
 
-      # - name: Push Docker image to ECR
-      #   run: |
-      #     docker push 476185633844.dkr.ecr.us-east-1.amazonaws.com/my-app3:latest
-
-      - name: Push Docker image to ECR with Retries
+      - name: Push Docker image to ECR
         run: |
-          for _ in {1..5}; do
-            docker push 476185633844.dkr.ecr.us-east-1.amazonaws.com/my-app4:latest && break
-            sleep 10
-          done
+          docker push 476185633844.dkr.ecr.us-east-1.amazonaws.com/my-app4:latest
+
+      # - name: Push Docker image to ECR with Retries
+      #   run: |
+      #     for _ in {1..5}; do
+      #       docker push 476185633844.dkr.ecr.us-east-1.amazonaws.com/my-app4:latest && break
+      #       sleep 10
+      #     done
