@@ -45,6 +45,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build & Push Image
       run: |
-        echo "${{ secrets.SH@nk@r25 }}" | docker login -u "ShankarC1625" --password-stdin
+        echo "${{ secrets.DOCKERPWD }}" | docker login -u "ShankarC1625" --password-stdin
         docker image build -t gs-maven/nov6:latest .
         docker push gs-maven/nov6:latest      
