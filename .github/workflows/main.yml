@@ -46,7 +46,7 @@ jobs:
 
     - name: Log in to Docker Hub
       run: |
-        echo ${{ secrets.DOCKERPWD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        echo "SH@nk@r25" | docker login -u "ShankarC1625@gmail.com" --password-stdin
 
     - name: Build and push Docker image
       run: |
