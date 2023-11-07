@@ -114,7 +114,7 @@ jobs:
           aws configure set default.region us-east-1
 
       - name: Update kubeconfig
-        run: aws eks update-kubeconfig --name cluster-own --region us-east-1
+        run: aws eks update-kubeconfig --name cluster-own --region us-east-2
 
       - name: Deploy to EKS
         run: kubectl apply -f  .github/workflows/deployment.yaml
