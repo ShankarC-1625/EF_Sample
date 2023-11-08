@@ -113,8 +113,17 @@ jobs:
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws configure set default.region us-east-1
 
+      # - name: Update kubeconfig
+      #   run: aws eks update-kubeconfig --name cluster-own --region us-east-2
+
+      # - name: Deploy to EKS
+      #   run: kubectl apply -f  .github/workflows/deployment.yaml
+
       - name: Update kubeconfig
-        run: aws eks update-kubeconfig --name cluster-own --region us-east-2
+        run: |
+          aws eks update-kubeconfig --name cluster-own --region us-east-2 --role-arn arn:aws:iam::476185633844:role/eksClusterRole
+        env:
+          AWS_DEFAULT_REGION: us-east-2  # Set the region as an environment variable
 
       - name: Deploy to EKS
-        run: kubectl apply -f  .github/workflows/deployment.yaml
+        run: kubectl apply -f .github/workflows/deployment.yaml
