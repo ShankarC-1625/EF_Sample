@@ -126,4 +126,4 @@ jobs:
           AWS_DEFAULT_REGION: us-east-2  # Set the region as an environment variable
 
       - name: Deploy to EKS
-        run: kubectl apply -f .github/workflows/deployment.yaml
+        run: kubectl apply -f /Users/sivasankarchalla/Documents/GitHub/EF_Sample/deployment.yaml
