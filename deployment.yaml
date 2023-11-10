@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app-container
+          image: 476185633844.dkr.ecr.us-east-1.amazonaws.com/my-app4:latest  # Replace with your ECR image URL
+          ports:
+            - containerPort: 8080  # Port your application listens on
